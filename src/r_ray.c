@@ -58,7 +58,7 @@ void R_CastRays()
                 side = 1;
             }
 
-            if (map[map_y*MAPWIDTH + map_x] > 0) hit = 1;
+            if (P_GetTileAtPos(map_x, map_y) > 0) hit = 1;
         }
 
         if (side == 0) perp_wall_distance = (map_x - player_position.x + (float)(1 - step_x)/2) / ray_dir.x;
