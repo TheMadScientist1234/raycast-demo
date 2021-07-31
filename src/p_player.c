@@ -5,15 +5,22 @@ pos2d_t player_position = { 4, 4 };
 pos2d_t player_direction = { -1, 0 };
 pos2d_t camera_plane = { 0, 0.5 };
 
-float rotate_speed = 0.001;
+const float move_speed = 0.005;
+const float rotate_speed = 0.002;
 
 void P_UpdatePlayer()
 {
     // move the player
     if (I_IsKeyPressed(SDLK_w))
-        player_position.x += 0.01;
+    {
+        player_position.x += player_direction.x * move_speed;
+        player_position.y += player_direction.y * move_speed;
+    }
     if (I_IsKeyPressed(SDLK_s))
-        player_position.x -= 0.01;
+    {
+        player_position.x -= player_direction.x * move_speed;
+        player_position.y -= player_direction.y * move_speed;
+    }
     
     // rotate the player
     if (I_IsKeyPressed(SDLK_a))
