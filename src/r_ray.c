@@ -68,7 +68,7 @@ void R_CastRays()
         int line_height = (int)(window_height / perp_wall_distance);
         int draw_start = -line_height / 2 + window_height / 2;
         if (draw_start < 0) draw_start = 0;
-        R_AddLine(x, draw_start, line_height / 2 + window_height / 2);
+        R_AddLine(x, draw_start, line_height / 2 + window_height / 2, side == 0 ? WHITE : GRAY);
     }
 }
 
