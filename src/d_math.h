@@ -23,8 +23,14 @@ void D_GetMatColumn(vec2d_t result, mat2d_t mat, int col);
 void D_MatMul(mat2d_t result, mat2d_t a, mat2d_t b);
 // Multiply a matrix and a vector storing the result in a vector
 void D_MatVecMul(vec2d_t result, mat2d_t a, vec2d_t b);
+// Subtract a vector by another vector
+void D_VecSub(vec2d_t result, vec2d_t a, vec2d_t b);
 // Multiply a vector by a scalar value
 void D_VecMul(vec2d_t result, vec2d_t a, float b);
+// Vector dot product
+float D_VecDot(vec2d_t a, vec2d_t b);
+// Vector rejection
+void D_VecReject(vec2d_t result, vec2d_t a, vec2d_t b);
 
 int D_Sign(float val);
 int D_Floor(float val);

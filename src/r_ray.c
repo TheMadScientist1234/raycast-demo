@@ -58,17 +58,24 @@ void R_CastRays()
                 side = 1;
             }
 
-            if (map[map_y*MAPWIDTH + map_x] > 0) hit = 1;
+            if (P_GetTileAtPos(map_x, map_y) > 0) hit = 1;
         }
 
         if (side == 0) perp_wall_distance = (map_x - player_position.x + (float)(1 - step_x)/2) / ray_dir.x;
         else           perp_wall_distance = (map_y - player_position.y + (float)(1 - step_y)/2) / ray_dir.y;
 
+        // determine lighting
+        lineColor_t line_color = WHITE;
+        if (step_x < 0 && side == 0)
+            line_color = GRAY;
+        if (step_y >= 0 && side == 1)
+            line_color = GRAY;
+
         // draw ray line
         int line_height = (int)(window_height / perp_wall_distance);
         int draw_start = -line_height / 2 + window_height / 2;
         if (draw_start < 0) draw_start = 0;
-        R_AddLine(x, draw_start, line_height / 2 + window_height / 2);
+        R_AddLine(x, draw_start, line_height / 2 + window_height / 2, line_color);
     }
 }
 
