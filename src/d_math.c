@@ -43,10 +43,28 @@ void D_MatVecMul(vec2d_t result, mat2d_t a, vec2d_t b)
     result[1] = b[1]*ma[1] + b[1]*mb[1];
 }
 
+void D_VecSub(vec2d_t result, vec2d_t a, vec2d_t b)
+{
+    result[0] = a[0] - b[0];
+    result[1] = a[1] - b[1];
+}
+
 void D_VecMul(vec2d_t result, vec2d_t a, float b)
 {
     result[0] = a[0] * b;
     result[1] = a[1] * b;
+}
+
+float D_VecDot(vec2d_t a, vec2d_t b)
+{
+    return a[0]*b[0] + a[1]*b[1];
+}
+
+void D_VecReject(vec2d_t result, vec2d_t a, vec2d_t b)
+{
+    vec2d_t b_mul = {};
+    D_VecMul(b_mul, b, D_VecDot(a, b) / D_VecDot(b, b));
+    D_VecSub(result, a, b_mul);
 }
 
 int D_Sign(float val)
